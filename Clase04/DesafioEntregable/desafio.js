@@ -6,14 +6,17 @@
 //deleteAll(): void - Elimina todos los objetos presentes en el archivo.
 //Aspectos a incluir en el entregable:
 //El método save incorporará al producto un id numérico por cada objeto, que deberá ser siempre uno más que el id del último objeto agregado (o id 1 si es el primer objeto que se agrega) y no puede estar repetido.
-//Tomar en consideración el contenido previo del archivo, en caso de utilizar uno existente.
+//Tomar en consideración el contenido previo del archivo, en caso de utilizar uno existente, sino crear el archivo
 //Implementar el manejo de archivos con el módulo fs de node.js, utilizando promesas con async/await y manejo de errores.
 //Probar el módulo creando un contenedor de productos, que se guarde en el archivo: “productos.txt”
 //Incluir un llamado de prueba a cada método, y mostrando por pantalla según corresponda para verificar el correcto funcionamiento del módulo construído.
 // formato de los productos: { title: 'Escuadra', price: 123.45, thumbnail: 'https://cdn3.iconfinder.com/data/icons/education-209/64/ruler-triangle-stationary-school-256.png' }
 
+
 const fs = require("fs").promises;
 const path = require("path");
+/* attention, the file should be already created. Why is fs deprecated?
+exists() is an anachronism and exists only for historical reasons. There should almost never be a reason to use it in your own code. In particular, checking if a file exists before opening it is an anti-pattern that leaves you vulnerable to race conditions: another process may remove the file between the calls to fs.  */
 
 class Contenedor {
   constructor(nombreArchivo) {
@@ -30,7 +33,7 @@ class Contenedor {
       }
       productos.push(producto);
       await fs.writeFile(
-        path.resolve('Clase04/DesafioEntregable', this.nombreArchivo),
+        path.resolve("./", this.nombreArchivo),
         JSON.stringify(productos, null, 2)
       );
       return producto.id;
@@ -52,7 +55,7 @@ class Contenedor {
   async getAll() {
     try {
       const contenido = await fs.readFile(
-        path.resolve('Clase04/DesafioEntregable', this.nombreArchivo),
+        path.resolve("./", this.nombreArchivo),
         "utf-8"
       );
       return JSON.parse(contenido);
@@ -69,7 +72,7 @@ class Contenedor {
         const index = productos.indexOf(producto);
         productos.splice(index, 1);
         await fs.writeFile(
-          path.resolve('Clase04/DesafioEntregable', this.nombreArchivo),
+          path.resolve("./", this.nombreArchivo),
           JSON.stringify(productos, null, 2)
         );
       }
@@ -81,7 +84,7 @@ class Contenedor {
   async deleteAll() {
     try {
       await fs.writeFile(
-        path.resolve('Clase04/DesafioEntregable', this.nombreArchivo),
+        path.resolve("./", this.nombreArchivo),
         JSON.stringify([], null, 2)
       );
     } catch (error) {
