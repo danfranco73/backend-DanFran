@@ -23,7 +23,7 @@ app.get('/visitas', (req, res) => {
 
 app.get('/fyh', (req, res) => {
     const date = new Date();
-    res.send({ yh: date.toLocaleString() });
+    res.send({ fyh : date.toLocaleString() });
 });
 
 const server = app.listen(port, () => {
