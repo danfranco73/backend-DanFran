@@ -8,7 +8,7 @@
 
 const express = require("express");
 const app = express();
-const PORT = 8080; // server's listening port
+const PORT = 8080 || process.env.PORT; // server port  
 const fs = require("fs").promises;
 const path = require("path");
 
