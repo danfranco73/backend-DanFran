@@ -1,12 +1,11 @@
 {
   "name": "back-end-danfran",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node ./Clase06/desafio06.js"
-  },
+    "start": "node index.js"
+     },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/danfranco73/backend-DanFran.git"
@@ -23,5 +22,6 @@
     "fyh": "^1.0.0",
     "moment": "^2.29.4",
     "nodemon": "^2.0.20"
-  }
+  },
+  "description": ""
 }
