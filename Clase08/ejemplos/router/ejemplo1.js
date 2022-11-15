@@ -20,28 +20,45 @@ const router = express.Router();
 
 // main routes
 
-app.use("/mascotas", router);
-app.use("/personas", router);
-
 router.get("/mascotas", (req, res) => {
-    res.send({ mascotas: mascotas });
-});
-
-router.post("/mascotas", (req, res) => {
-    mascotas.push(req.body);
-    res.send({ mascotas: mascotas });
+    res.json({mascotas:mascotas});
 });
 
 router.get("/personas", (req, res) => {
-    res.send({ personas: personas });
+    res.json({personas:personas});
+});
+
+router.post("/mascotas", (req, res) => {
+    console.log("ingreso mascota");
+    mascotas.push(req.body);
+    res.json("mascota agregada");
 });
 
 router.post("/personas", (req, res) => {
+    console.log("ingreso persona");
     personas.push(req.body);
-    res.send({ personas: personas });
+    res.json("persona agregada");
 });
 
+// delete routes
+
+router.delete("/mascotas", (req, res) => {
+    console.log("elimino mascota");
+    mascotas.pop();
+    res.json("mascota eliminada");
+});
+
+router.delete("/personas", (req, res) => {
+    console.log("elimino persona");
+    personas.pop();
+    res.json("persona eliminada");
+});
+
+// router middleware
+
 app.use("/api", router);
+
+// start the server
 
 app.listen(PORT, () => {
     if (PORT) {
