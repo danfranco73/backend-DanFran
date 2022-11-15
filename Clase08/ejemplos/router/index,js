@@ -1,0 +1,34 @@
+const express = require("express"); // Import express
+const { Router } = express; // Import Router from express
+const app = express(); // Create an instance of express
+const PORT = 8090; // PORT to listen
+
+const router = new Router(); // Create a new router
+
+// Configure the router
+
+// Users
+
+router.get("/users", (req, res) => {
+    res.json({ users: ["user1", "user2", "user3"] 
+})});
+
+// Products
+
+router.get("/productos", (req, res) => {
+    res.send("ruta de productos");
+});
+
+// Router middleware
+
+app.use("/api", router);    // All routes in the router will be prefixed with /api
+
+// Start the server
+
+app.listen(PORT, () => {
+    if (PORT) {
+        console.log(`Server listening on port ${PORT}`);
+    } else {
+    console.error("Error message");
+    }
+});
