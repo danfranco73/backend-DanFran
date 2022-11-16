@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Desafio C08 Dan Fran</title>
+  </head>
+  <body>
+    <h1>Path Absoluto</h1>
+    <br>
+    <br>
+    <form action="/api/productos" method="post" target="_blank">
+      <div class="form-group">
+        <label for="title">Nombre del producto</label>
+        <input
+          type="text"
+          class="form-control"
+          id="title"
+          name="title"
+          placeholder="Ingrese el nombre del producto"
+          required
+        />
+      </div>
+      <br>
+      <br>
+      <div class="form-group">
+        <label for="price">Precio</label>
+        <input
+          type="number"
+          class="form-control"
+          id="price"
+          name="price"
+          placeholder="Ingrese el precio del producto"
+          required
+        />
+      </div>
+      <br>
+      <br>
+      <div class="form-group">
+        <label for="thumbnail">URL de la imagen</label>
+        <input
+          type="text"
+          class="form-control"
+          id="thumbnail"
+          name="thumbnail"
+          placeholder="Ingrese la URL de la imagen"
+        />
+      </div>
+      <button type="submit" class="btn btn-primary">Enviar</button>
+    </form>
+  </body>
+</html>

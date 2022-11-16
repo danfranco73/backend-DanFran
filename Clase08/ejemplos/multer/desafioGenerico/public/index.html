@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desafio Generico Multer Dan Fran</title>
+</head>
+<body>
+    <!-- Single File -->
+    <form action="/upload" method="post" enctype="multipart/form-data">
+        <input type="file" name="file" id="file">
+        <input type="submit" value="Upload">
+    </form>
+    <!-- Multiple Files -->
+    <form action="/upload" method="post" enctype="multipart/form-data">
+        <input type="file" name="files" id="files" multiple>
+        <input type="submit" value="Upload">
+    </form>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $('#file').change(function(){
+                var i = $(this).prev('label').clone();
+                var file = $('#file')[0].files[0].name;
+                $(this).prev('label').text(file);
+            });
+            $('#files').change(function(){
+                var i = $(this).prev('label').clone();
+                var file = $('#files')[0].files[0].name;
+                $(this).prev('label').text(file);
+            });
+        });
+    </script>
+
+    
+</body>
+</html>
